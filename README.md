@@ -31,9 +31,9 @@ The core engine is architected for **ARM64 (AWS Graviton3)** environments, deliv
 * **Data Store:** PostgreSQL, Redis (IO/Cache).
 * **Ops:** Docker & Docker Compose, AWS SDK, GitHub Actions.
 
-## Installation (Development)
+## Installation (Development) License
 ```bash
 In the process of development, waiting...
 
-License
-This project is licensed under the MIT License.
+
+
