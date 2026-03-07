@@ -1,19 +1,18 @@
 # QWX System (Open-Source Core)
 
-High-performance distributed computer vision platform for real-time vehicle identification, Automatic License Plate Recognition (ALPR), and logistics document digitization optimized for ARM64 environments (AWS Graviton3).
+High-performance distributed computer vision platform for real-time vehicle identification, Automatic License Plate Recognition (ALPR), and traffic analytics.
 
-QWX bridges physical vehicle flow with digital logistics systems by combining object detection, tracking, OCR, and rule-based normalization in a distributed pipeline.
+Optimized for ARM64 environments (AWS Graviton3) to deliver scalable inference pipelines with reduced operational cost.
 
 ---
 
 ## Core Capabilities
 
 - Real-time Automatic License Plate Recognition (ALPR)
-- Vehicle tracking using multi-object tracking
-- Document digitization for CMR, waybills, and logistics forms
-- Distributed inference pipeline
-- High-throughput asynchronous processing
-- ARM64 optimized runtime for cost-efficient cloud deployment
+- Vehicle Tracking: Multi-object tracking (MOT) for traffic analytics.
+- Distributed Inference: Separation of ingestion and heavy CV workloads.
+- ARM64 Native: Optimized for AWS Graviton3 (r7g / t4g instances).
+- High Throughput: Asynchronous processing via Redis-backed task queues.
 
 ---
 
@@ -69,11 +68,11 @@ Advantages:
 
 ### Computer Vision
 - OpenCV
-- YOLOv8 / YOLOv10
-- DeepSORT
+- YOLOv8 / YOLOv10 / Ultralytics YOLO
+- DeepSORT / ByteTrack
 
 ### OCR
-- PaddleOCR
+- PaddleOCR (CPU optimized)
 - Tesseract
 - LayoutParser
 
@@ -90,7 +89,7 @@ Advantages:
 
 ---
 
-## ARM64 Optimization
+## ARM64 & Graviton3 Optimization
 
 QWX is designed to run efficiently on ARM64 cloud infrastructure, especially:
 
@@ -169,11 +168,11 @@ Automated vehicle entry and exit validation with dwell-time analytics.
 
 ### Secure Facility Monitoring
 
-Vehicle tracking and unauthorized access detection in restricted zones.
+Vehicle detection and unauthorized access monitoring.
 
-### Logistics Checkpoints
+### Traffic Analytics
 
-Automated truck identification and transport document digitization.
+Vehicle classification, counting, and flow monitoring.
 
 ---
 
