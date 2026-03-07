@@ -1,10 +1,20 @@
+# Real-time Computer Vision
+ultralytics>=8.0.0
 paddleocr>=2.7.0
-paddlepaddle-gpu==2.5.2; python_version >= '3.10'
-easyocr>=1.7.1
+paddlepaddle==2.5.2; python_version >= '3.10'
 opencv-python-headless>=4.8.0.76
 numpy>=1.24.3
-pytorch-lightning>=2.1.0
-layoutparser[layoutmodel,tesseract]
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Tracking & Analytics
+filterpy>=1.4.5
+
+# API & Server (FastAPI for ARM64)
 fastapi>=0.104.0
 uvicorn>=0.24.0
 python-multipart>=0.0.6
+
+# Backend Logic
+redis
+python-dotenv
