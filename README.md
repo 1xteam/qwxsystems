@@ -26,7 +26,7 @@ The system is architected for ARM64 (AWS Graviton) environments to achieve high 
 ## Tech Stack
 
 * **Runtimes:** Node.js 20+, Python 3.11+
-* **OCR Layer:** Tesseract / Custom Neural Net implementations / AI Processing
+* **OCR Layer:** Tesseract / Custom Neural Net implementations / AI Processing / YOLOv8 / YOLOv10 (Object Detection) / OpenCV (Image Processing) / DeepSORT (Tracking)
 * **Data Store:** PostgreSQL (Relational Data), Redis (Task Queue)
 * **Ops:** Docker, AWS SDK, GitHub Actions
 
