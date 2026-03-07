@@ -1,39 +1,195 @@
 # QWX System (Open-Source Core)
 
-**High-Performance Computer Vision & Logistics Intelligence Suite optimized for ARM64.**
+High-performance distributed computer vision platform for real-time vehicle identification, Automatic License Plate Recognition (ALPR), and logistics document digitization optimized for ARM64 environments (AWS Graviton3).
 
-## Overview
-QWX System is an enterprise-grade distributed platform designed for real-time vehicle identification, automated license plate recognition (ALPR), and logistics document digitization. 
+QWX bridges physical vehicle flow with digital logistics systems by combining object detection, tracking, OCR, and rule-based normalization in a distributed pipeline.
 
-The core engine is architected for **ARM64 (AWS Graviton3)** environments, delivering high-throughput processing for smart parking, secure access control, and automated supply chain checkpoints. By combining real-time Object Detection with structural OCR, QWX bridges the gap between physical vehicle flow and digital ERP systems.
+---
 
-## Key Use Cases
-* **Smart Parking & Access Control:** Automated vehicle entry/exit validation using ALPR and dwell-time analytics.
-* **High-Security Monitoring:** Real-time multi-object tracking (MOT) and unauthorized vehicle detection in restricted zones.
-* **Logistics Automation:** Simultaneous recognition of vehicle identifiers and digital processing of transport documents (CMR, Waybills).
+## Core Capabilities
 
-## Architecture
-* **QWX-API:** High-concurrency Node.js gateway for stream ingestion and state management.
-* **QWX-Worker:** Python-based processing nodes utilizing neural networks for object detection (YOLO) and document segmentation.
-* **QWX-Intelligence:** Dynamic rule engine for mapping unstructured CV data into standardized JSON schemas.
-* **Infrastructure:** Optimized for **AWS Graviton3 (r7g/t4g)** with Redis-backed task queuing via BullMQ.
+- Real-time Automatic License Plate Recognition (ALPR)
+- Vehicle tracking using multi-object tracking
+- Document digitization for CMR, waybills, and logistics forms
+- Distributed inference pipeline
+- High-throughput asynchronous processing
+- ARM64 optimized runtime for cost-efficient cloud deployment
 
-## Features
-* **Hybrid Recognition Engine:** Integrated support for YOLOv8/v10 (Detection), DeepSORT (Tracking), and PaddleOCR (Text Extraction).
-* **ARM64 Native Performance:** Up to 25% efficiency increase on Graviton3 vs x86_64, reducing operational costs for large-scale deployments.
-* **Asynchronous Processing:** Distributed worker architecture for parallelizing heavy CV tasks.
-* **Audit Trail:** Full versioning and verification of extracted identifiers and telemetry.
+---
 
-## Tech Stack
-* **Runtimes:** Node.js 20+, Python 3.11+
-* **Computer Vision:** OpenCV, YOLOv8/v10, DeepSORT.
-* **OCR Layer:** PaddleOCR, Tesseract, LayoutParser.
-* **Data Store:** PostgreSQL, Redis (IO/Cache).
-* **Ops:** Docker & Docker Compose, AWS SDK, GitHub Actions.
+## System Architecture
 
-## Installation (Development) License
-```bash
-In the process of development, waiting...
+QWX uses a distributed micro-pipeline architecture separating API orchestration from compute-heavy computer vision inference.
 
+Camera / Stream  
+↓  
+Frame Ingestion (Node.js API Gateway)  
+↓  
+Redis Task Queue (BullMQ)  
+↓  
+Python Processing Workers  
+• Object Detection (YOLOv8 / YOLOv10)  
+• Multi-Object Tracking (DeepSORT)  
+• OCR Extraction (PaddleOCR / Tesseract)  
+↓  
+Post-Processing Engine  
+• Plate normalization  
+• Confidence scoring  
+• Format validation  
+↓  
+Structured Output (JSON / ERP Integration)
 
+---
 
+## Distributed Processing Model
+
+Node API  
+↓ enqueue  
+Redis Queue  
+↓ distribute tasks  
+Worker Pool (Python)  
+• detection  
+• OCR  
+• normalization  
+
+Advantages:
+
+- Non-blocking API layer
+- Horizontal worker scaling
+- Isolation of CPU-bound CV workloads
+- Fault-tolerant distributed pipeline
+
+---
+
+## Technology Stack
+
+### Runtime
+- Node.js 20+
+- Python 3.11+
+
+### Computer Vision
+- OpenCV
+- YOLOv8 / YOLOv10
+- DeepSORT
+
+### OCR
+- PaddleOCR
+- Tesseract
+- LayoutParser
+
+### Data Infrastructure
+- PostgreSQL
+- Redis
+- BullMQ
+
+### Infrastructure
+- Docker
+- Docker Compose
+- AWS SDK
+- GitHub Actions
+
+---
+
+## ARM64 Optimization
+
+QWX is designed to run efficiently on ARM64 cloud infrastructure, especially:
+
+AWS Graviton3 (r7g / t4g instances)
+
+Benefits:
+
+- lower compute cost
+- improved performance per watt
+- efficient large-scale inference clusters
+
+---
+
+## Example Processing Flow
+
+Input Frame  
+↓  
+Vehicle Detection  
+↓  
+License Plate Detection  
+↓  
+Plate Crop  
+↓  
+OCR Extraction  
+↓  
+Normalization  
+↓  
+Structured Output
+
+Example output:
+
+{
+  "vehicle_id": "frame_1721",
+  "plate": "80A123BC",
+  "confidence": 0.97,
+  "timestamp": "2026-03-07T11:20:31Z"
+}
+
+---
+
+## Repository Structure
+
+qwxsystems  
+├ src/ (Node.js API gateway)  
+├ workers/ (Python CV processing nodes)  
+├ tests/ (unit and integration tests)  
+├ docker-compose.yml  
+├ requirements.txt  
+├ package.json  
+└ README.md  
+
+---
+
+## Quick Start (Development)
+
+In development...
+
+## Example API Health Check
+
+GET /health
+
+Response
+
+{
+  "status": "ok",
+  "service": "qwx-api"
+}
+
+---
+
+## Use Cases
+
+### Smart Parking and Access Control
+
+Automated vehicle entry and exit validation with dwell-time analytics.
+
+### Secure Facility Monitoring
+
+Vehicle tracking and unauthorized access detection in restricted zones.
+
+### Logistics Checkpoints
+
+Automated truck identification and transport document digitization.
+
+---
+
+## Roadmap
+
+- GPU acceleration support
+- ONNX runtime optimization
+- Kafka ingestion pipeline
+- Multi-camera synchronization
+- Edge deployment support
+- Advanced plate normalization
+
+---
+
+## License
+
+MIT License
+
+Open-source core of the QWX distributed computer vision platform.
