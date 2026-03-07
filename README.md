@@ -188,6 +188,15 @@ Automated truck identification and transport document digitization.
 
 ---
 
+## Demo
+
+Input frame → detected license plate → OCR result
+
+Example:
+
+Plate: 45A123BC  
+Confidence: 0.97
+
 ## License
 
 MIT License
