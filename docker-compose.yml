@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  qwx-api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_URL=redis://qwx-cache:6379
+      - NODE_ENV=production
+    depends_on:
+      - qwx-cache
+
+  qwx-worker:
+    build: 
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - REDIS_URL=redis://qwx-cache:6379
+      - ENGINE_TYPE=PADDLE_OCR
+    depends_on:
+      - qwx-cache
+
+  qwx-cache:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
