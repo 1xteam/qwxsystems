@@ -1,5 +1,6 @@
 # QWX System (Open-Source Core)
 
+Core focus: Real-time Vehicle Identification, ALPR, and Traffic Analytics optimized for ARM64.
 High-performance logistics intelligence and document automation platform for global supply chains.
 
 ## Overview
