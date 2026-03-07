@@ -1,36 +1,39 @@
 # QWX System (Open-Source Core)
 
-Core focus: Real-time Vehicle Identification, ALPR, and Traffic Analytics optimized for ARM64.
-High-performance logistics intelligence and document automation platform for global supply chains.
+**High-Performance Computer Vision & Logistics Intelligence Suite optimized for ARM64.**
 
 ## Overview
+QWX System is an enterprise-grade distributed platform designed for real-time vehicle identification, automated license plate recognition (ALPR), and logistics document digitization. 
 
-QWX System is a distributed platform designed to automate the digitization of logistics documentation. The core engine performs structural recognition (OCR) and data extraction from unstructured documents including International CMR, Waybills, and Customs Declarations.
+The core engine is architected for **ARM64 (AWS Graviton3)** environments, delivering high-throughput processing for smart parking, secure access control, and automated supply chain checkpoints. By combining real-time Object Detection with structural OCR, QWX bridges the gap between physical vehicle flow and digital ERP systems.
 
-The system is architected for ARM64 (AWS Graviton) environments to achieve high throughput and low-latency processing in high-load logistics networks.
+## Key Use Cases
+* **Smart Parking & Access Control:** Automated vehicle entry/exit validation using ALPR and dwell-time analytics.
+* **High-Security Monitoring:** Real-time multi-object tracking (MOT) and unauthorized vehicle detection in restricted zones.
+* **Logistics Automation:** Simultaneous recognition of vehicle identifiers and digital processing of transport documents (CMR, Waybills).
 
 ## Architecture
+* **QWX-API:** High-concurrency Node.js gateway for stream ingestion and state management.
+* **QWX-Worker:** Python-based processing nodes utilizing neural networks for object detection (YOLO) and document segmentation.
+* **QWX-Intelligence:** Dynamic rule engine for mapping unstructured CV data into standardized JSON schemas.
+* **Infrastructure:** Optimized for **AWS Graviton3 (r7g/t4g)** with Redis-backed task queuing via BullMQ.
 
-* **QWX-API:** High-concurrency Node.js service for document ingestion and state management.
-* **QWX-Worker:** Python-based processing nodes utilizing neural networks for document segmentation and field extraction.
-* **QWX-Parser:** Dynamic rule engine for mapping unstructured OCR output to standardized JSON schemas.
-* **Infrastructure:** Optimized for Graviton3 (r7g/t4g) with Redis-backed task queuing.
-
-## Key Features
-
-* **Asynchronous Document Processing:** Distributed worker architecture for parallel OCR tasks.
-* **ARM64 Native Performance:** 25%+ performance improvement on AWS Graviton3 vs traditional x86_64.
-* **Schema-Independent Parsing:** Supports diverse international and regional document standards through a pluggable parser architecture.
-* **Audit Trail:** Full versioning and verification of extracted data points.
+## Features
+* **Hybrid Recognition Engine:** Integrated support for YOLOv8/v10 (Detection), DeepSORT (Tracking), and PaddleOCR (Text Extraction).
+* **ARM64 Native Performance:** Up to 25% efficiency increase on Graviton3 vs x86_64, reducing operational costs for large-scale deployments.
+* **Asynchronous Processing:** Distributed worker architecture for parallelizing heavy CV tasks.
+* **Audit Trail:** Full versioning and verification of extracted identifiers and telemetry.
 
 ## Tech Stack
-
 * **Runtimes:** Node.js 20+, Python 3.11+
-* **OCR Layer:** Tesseract / Custom Neural Net implementations / AI Processing / YOLOv8 / YOLOv10 (Object Detection) / OpenCV (Image Processing) / DeepSORT (Tracking)
-* **Data Store:** PostgreSQL (Relational Data), Redis (Task Queue)
-* **Ops:** Docker, AWS SDK, GitHub Actions
+* **Computer Vision:** OpenCV, YOLOv8/v10, DeepSORT.
+* **OCR Layer:** PaddleOCR, Tesseract, LayoutParser.
+* **Data Store:** PostgreSQL, Redis (IO/Cache).
+* **Ops:** Docker & Docker Compose, AWS SDK, GitHub Actions.
 
 ## Installation (Development)
-
 ```bash
-during the development process, expect it.....
+In the process of development, waiting...
+
+License
+This project is licensed under the MIT License.
