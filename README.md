@@ -192,10 +192,13 @@ Automated truck identification and transport document digitization.
 
 Input frame → detected license plate → OCR result
 
-Example:
+|          Night Recognition                   | Detection & OCR |
+|-------------------------------------|--------------------------------|
+| ![](assets/demo_recog_night.jpg)    |     ![](assets/demo_recpg.jpg) |
 
-Plate: 45A123BC  
-Confidence: 0.97
+   Example:                                         Example: 
+   Plate: _______                                   Plate: _________ 
+   Confidence: 0.99                                 Confidence: 0.97
 
 ## License
 
