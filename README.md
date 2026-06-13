@@ -1,18 +1,48 @@
-# QWX System (Open-Source Core)
+## QWX Systems Open-Source Core
 
-High-performance distributed computer vision platform for real-time vehicle identification, Automatic License Plate Recognition (ALPR), and traffic analytics.
+Open-source distributed computer vision platform for real-time vehicle identification, Automatic License Plate Recognition (ALPR), smart parking automation, access control, and traffic analytics from regular IP camera streams.
+QWX is designed as an extensible computer vision core that separates camera ingestion, queue orchestration, and recognition workers, enabling deployment from edge devices to large-scale cloud infrastructure.
 
-Optimized for ARM64 environments (AWS Graviton3) to deliver scalable inference pipelines with reduced operational cost.
+---
+
+## Project Status
+
+QWX Systems Open-Source Core is currently under active development.
+This repository contains the public architecture, roadmap, and open-source components of the platform.
+Current focus areas:
+
+Distributed ALPR pipeline
+Multi-camera ingestion
+OCR normalization engine
+ARM64 optimization
+Edge deployment support
+
+Production deployments currently use internal components that are gradually being extracted into the public open-source core.
+
+---
+
+## Overview
+
+Most ALPR systems depend on specialized cameras, vendor SDKs, or proprietary software.
+QWX focuses on recognition from standard IP cameras and commodity infrastructure.
+The platform processes camera frames, detects vehicles and license plates, performs OCR, normalizes plate numbers, and generates structured events that can be integrated with parking systems, access control platforms, ERP systems, analytics pipelines, and custom applications.
 
 ---
 
 ## Core Capabilities
 
-- Real-time Automatic License Plate Recognition (ALPR)
-- Vehicle Tracking: Multi-object tracking (MOT) for traffic analytics.
-- Distributed Inference: Separation of ingestion and heavy CV workloads.
-- ARM64 Native: Optimized for AWS Graviton3 (r7g / t4g instances).
-- High Throughput: Asynchronous processing via Redis-backed task queues.
+-Real-time Automatic License Plate Recognition (ALPR)
+-Vehicle detection from standard IP camera streams
+-Multi-object vehicle tracking
+-Distributed inference workers
+-Queue-based asynchronous processing
+-OCR extraction and normalization
+-Confidence scoring and validation
+-Smart parking automation
+-Vehicle access control
+-Traffic analytics and monitoring
+-ARM64 cloud optimization
+-Edge deployment support
 
 ---
 
@@ -20,7 +50,7 @@ Optimized for ARM64 environments (AWS Graviton3) to deliver scalable inference p
 
 QWX uses a distributed micro-pipeline architecture separating API orchestration from compute-heavy computer vision inference.
 
-Camera / Stream  
+Camera / RTSP / HTTP Stream
 ↓  
 Frame Ingestion (Node.js API Gateway)  
 ↓  
@@ -143,9 +173,18 @@ qwxsystems
 
 ---
 
-## Quick Start (Development)
+## Quick Start
 
-In development...
+The project is currently under active development.
+
+Current milestones:
+
+Architecture finalized
+Distributed processing model implemented
+Recognition pipeline under active development
+Public roadmap available
+
+Community feedback and contributions are welcome.
 
 ## Example API Health Check
 
@@ -159,8 +198,6 @@ Response
 }
 
 ---
-
-## Use Cases
 
 ### Smart Parking and Access Control
 
@@ -184,6 +221,8 @@ Vehicle classification, counting, and flow monitoring.
 - Multi-camera synchronization
 - Edge deployment support
 - Advanced plate normalization
+- Vehicle re-identification
+- Real-time analytics dashboard
 
 ---
 
@@ -198,6 +237,12 @@ Input frame → detected license plate → OCR result
    Example:                                         Example: 
    Plate: _______                                   Plate: _________ 
    Confidence: 0.99                                 Confidence: 0.97
+
+## Contributing
+
+Bug reports, feature requests, discussions, and pull requests are welcome.
+
+For major architectural changes, please open an issue before starting implementation.
 
 ## License
 
